@@ -1,8 +1,8 @@
 import Footer from "@/components/global/footer";
 import Menu from "@/components/homepage/Menu";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
 
 import Contact from "@/components/homepage/ContactComponent";
 import ShowMap from "@/components/MapComponent";

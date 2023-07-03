@@ -22,7 +22,7 @@ const API_URL =
   "&key=" +
   api_Key;
 
-type Vids = { vids: any[] };
+//type Vids = { vids: any[] };
 
 async function getVideos() {
   const res = await fetch(API_URL);
