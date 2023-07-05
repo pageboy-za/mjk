@@ -27,7 +27,7 @@ const API_URL =
 async function getVideos() {
   const res = await fetch(API_URL);
   const data = await res.json();
-  const vids = data.items.reverse();
+  const vids = data.items.reverse() || [];
   return vids;
 }
 
