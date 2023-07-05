@@ -13,7 +13,7 @@ type PointOfInterest = {
     address: string;
     lat: number;
     lng: number;
-  }
+  };
 };
 const mapContainerStyle = {
   width: "100%",
@@ -27,7 +27,7 @@ const options = {
 
 export default function ShowMap({ location }: PointOfInterest) {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.PUBLIC_GOOGLE_API_KEY || "",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY || "",
   });
 
   const center = {
