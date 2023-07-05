@@ -7,26 +7,36 @@ const ReactPlayer = dynamic(() => import('react-player/youtube'), {
   ssr: false,
 })
 
-export default function VideoComponent(props: {
-  vidSrc: string
-  muted?: boolean
-  autoPlay?: boolean
-  controls?: boolean
-  captions?: boolean
-  title?: string
-  date?: string
-  light?: boolean
-  playIcon?: any
-  poster?: any
-}) {
-  const { vidSrc, muted, autoPlay, controls, light, poster, title, date } =
-    props
+type VideoComponentProps = {
+  vidSrc: string;
+  muted?: boolean;
+  autoPlay?: boolean;
+  controls?: boolean;
+  captions?: boolean;
+  title?: string;
+  date?: string;
+  light?: boolean;
+  playIcon?: any;
+  poster?: any;
+}
+export default function VideoComponent({
+  vidSrc,
+  muted,
+  autoPlay,
+  controls,
+  captions,
+  title,
+  date,
+  light,
+  playIcon,
+  poster,
+}: VideoComponentProps) {
 
   return (
     <div>
       <div className="pb-2 text-xl font-bold">{title}</div>
       <div className="text-right text-base">
-        <PostDate dateString={date} />
+        <PostDate dateString={date || ''} />
       </div>
       <div className="relative pb-[56.25%]">
         <ReactPlayer

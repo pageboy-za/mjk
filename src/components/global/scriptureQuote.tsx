@@ -1,4 +1,12 @@
-export default function ScriptureQuote({ children, reference, version }) {
+import React, { ReactNode } from 'react';
+
+type ScriptureQuoteProps = {
+  children: ReactNode;
+  reference: string;
+  version: string;
+};
+
+export default function ScriptureQuote({ children, reference, version }: ScriptureQuoteProps) {
   return (
     <blockquote className="overflow-hidden bg-white divide-y divide-gray-100 rounded-lg ">
       <div className="py-1 pb-4 pl-2 pr-2 m-1 border-l-4 border-gray-400 sm:p-6">

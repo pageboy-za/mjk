@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   GoogleMap,
   InfoWindow,
@@ -7,13 +7,14 @@ import {
 } from "@react-google-maps/api";
 import { useState } from "react";
 
-interface PointOfInterest {
-  name: string;
-  address: string;
-  lat: number;
-  lng: number;
-}
-
+type PointOfInterest = {
+  location: {
+    name: string;
+    address: string;
+    lat: number;
+    lng: number;
+  }
+};
 const mapContainerStyle = {
   width: "100%",
   height: "350px",
@@ -24,9 +25,9 @@ const options = {
   zoomControl: true,
 };
 
-export default function ShowMap({ ...location }: PointOfInterest) {
+export default function ShowMap({ location }: PointOfInterest) {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.PUBLIC_GOOGLE_API_KEY222,
+    googleMapsApiKey: process.env.PUBLIC_GOOGLE_API_KEY || "",
   });
 
   const center = {

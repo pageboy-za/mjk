@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import SpinLoading from "@/components/global/SpinLoading";
 import Container from "@/components/structural/container";
 import VideoComponent from "@/components/videoComponent";
@@ -17,21 +16,29 @@ const API_URL =
   "&key=" +
   api_Key;
 
-export default function YouTubePlaylist() {
+interface YouTubePlaylistProps { }
+
+interface PlaylistItem {
+  snippet: {
+    resourceId: {
+      videoId: string;
+    };
+  };
+}
+
+export default function YouTubePlaylist({ }: YouTubePlaylistProps) {
   const [videoId, setVideoId] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     fetch(API_URL)
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: { items: PlaylistItem[] }) => {
         setLoading(false);
-        setVideoId(
-          data.items[data.items.length - 1].snippet.resourceId.videoId
-        );
+        setVideoId(data.items[data.items.length - 1].snippet.resourceId.videoId);
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         setLoading(false);
         setError(error);
       });
@@ -47,7 +54,7 @@ export default function YouTubePlaylist() {
   }
 
   return error ? (
-    <p>Error: {error?.message}</p>
+    <p>Error: {error.message}</p>
   ) : (
     <>
       <Container>
